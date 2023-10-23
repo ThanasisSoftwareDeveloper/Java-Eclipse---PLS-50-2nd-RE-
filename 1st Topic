@@ -1,3 +1,10 @@
+/****************************************************************************
+ *                          PLS50                                           *
+ *                      2nd Assignment                                      *
+ *                     1st Topic/file 1                                     *
+ *                  Academic Year 2020-2021                                 *
+ ***************************************************************************/
+
 import java.util.Scanner;//necessary
 import java.io.*;//necessary
 import java.util.*;//necessary
@@ -77,4 +84,70 @@ catch(IOException e){
         System.out.println(element);}
     }//method end
   
+    }//class end
+
+/****************************************************************************
+ *                           PLS50                                          *
+ *                      2nd Assignment                                      *
+ *                      1st Topic/ file 2                                   *
+ *                  Academic Year 2020-2021                                 *
+ ****************************************************************************/
+import java.io.*;//necessary
+import java.util.Scanner;//necessary
+import java.lang.Exception;//for exceptions
+
+ public class URLsVisitedApp{
+     
+     public static void fileAnalyzer(String filename){//methodos me orisma to onoma tou arxeiou
+         try{
+             //dimiourgeia  antikeimenou URLsVisited()
+             URLsVisited ThaURLsVisited = new URLsVisited(filename);
+                         
+             ThaURLsVisited.printAll();//ektiposi olwn twn dieuthinsewn komvwn arxeiou
+             
+             ThaURLsVisited.removeDublicates();//remove same urls
+             
+             ThaURLsVisited.printAll();//print only unique urls
+            
+            }
+            
+        catch(Exception e){
+            System.out.println("Could not find the file"+filename+ 
+            "Please insert a valid path and filename");
+            }
+            
+        }//method end
+     
+     public static void main(String[] arg){
+         //declare file name (hole path)
+         String fileName = "C:\\javacode\\Thema1_E02\\mySources.src";
+         try{
+             
+         System.out.println("Which filename do you want to analyze?");//message
+         
+         //Scanner fileName = new Scanner(System.in);//constractor input object
+         
+         //message in new line
+         System.out.println("The file analyzed is:"+fileName);
+         //open to read the file mySources.src
+         FileInputStream myfile = new FileInputStream(fileName);
+         //Create an object input stream DataInputStream type
+         DataInputStream in = new DataInputStream(myfile);
+         BufferedReader br = new BufferedReader(new InputStreamReader(in));
+         
+ 
+         //klisi tis fileAnalyzer() me orisma, to arxeio apo keyboard
+         fileAnalyzer(fileName);
+         
+        }
+        catch(FileNotFoundException e){
+            System.out.println(e+fileName+
+            "The system cannot find the file specified");
+        }
+        catch(Exception e){
+            System.out.println("Could not find the file"+fileName+ 
+            "Please insert a valid path and filename");
+        }
+         
+    }//main end
     }//class end
