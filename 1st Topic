@@ -1,0 +1,80 @@
+import java.util.Scanner;//necessary
+import java.io.*;//necessary
+import java.util.*;//necessary
+import java.util.ArrayList;//necessary
+import java.util.Arrays;//necessary
+import java.util.List;//necessary
+import java.util.stream.Collectors;//necessary
+import java.util.LinkedHashSet;//necessary, from internet search
+
+ public class URLsVisited{
+    //dilosi kai dimiourgia String 1D ArrayList
+    private ArrayList<String> myUrls = new ArrayList<String>(); 
+     /*
+      * constractor me orisma to onoma tou arxeiou urls, 
+      * diavazei grammi-grammi periexomena arxeiou
+      * diaxorizei meroi dieuthinsis kathe istoselidas
+      * apothikeuei dieuthinsi komvou sto ArrayList "MyUrls"
+      */
+    public URLsVisited (String filename){//constractor
+     try{    
+    //declare and constract file object
+    File newfile = new File(filename);
+
+    //dilosi kai dimiourgeia antikeimenou anagnosis apo arxeio
+    Scanner sc = new Scanner(newfile);
+        
+    String temp_string;//local field
+           
+        while (sc.hasNextLine()){//oso uparxoun akoma grammes
+            temp_string = sc.nextLine();//read next line 
+            
+     /*kathe tmima ton urls apothikeuetai se diaforetiko stoixeio
+      * pinaka, diatirontas seira emfanisis
+      */ 
+         String[] parts = temp_string.split("/");
+                           
+    //apothikeuei 1ou tmimatos dieuthinsis(komvou) ston ArrayLink "myUrls"
+    myUrls.add(parts[0]);
+}
+sc.close();//close reading object
+}
+catch(IOException e){
+    System.out.println(e);
+}
+
+
+}//constructor end
+
+    public void removeDublicates(){//afairesi diplotipwn
+     ArrayList<String> uniqueUrls = new ArrayList<String>();//new ArrayList 
+     
+     //Emfanisi arxikis listas, oste meta na kanoume opoiadipote diergasia
+            System.out.println("Before Sorting: ");
+            for(String element:myUrls){
+            System.out.println(element);}
+        
+      //oi 2 epomenes grammes kodika einai apo internet, gia dimiourgia neou ArrayList, xoris Duplicates.     
+        LinkedHashSet<String> hashSet = new LinkedHashSet<>(myUrls);
+         
+        ArrayList<String> listWithoutDuplicates = new ArrayList<>(hashSet);
+         
+        //anathesi(antigrafi)  neou ArrayList, ston myUrls
+
+            myUrls = listWithoutDuplicates;
+            
+            Collections.sort(myUrls);//taksinomisi telikis ArrayList
+        
+            //emfanisi monadikwn dieuthinsewn komvwn 
+            System.out.println("After Sorting: ");
+            for(String element:myUrls){
+            System.out.println(element);}
+            
+        }//method end
+    public void printAll(){
+        //emfanisi monadikwn dieuthinsewn komvwn 
+        for(String element:myUrls){
+        System.out.println(element);}
+    }//method end
+  
+    }//class end
