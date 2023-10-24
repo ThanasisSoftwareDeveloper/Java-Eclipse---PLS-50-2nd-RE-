@@ -76,3 +76,27 @@ public void getSupermarketSales(){
     
 }//method end
 }//class end
+
+/*****************************************************************************
+ *                              PLS50                                        *
+ *                          2nd Assignment                                   *
+ *                         3rd Topic/ file 2                                 *
+ *                      Academic Year 2020-2021                              *
+ ****************************************************************************/
+public class MainProgramSupermarket{
+    public static void main(String[] arg){
+        //dilosi kai arxikopoiisi pinaka me times Eikonas 1.
+        double[][] Ar = {{12502.5,2506.75,8088.33,1289.55},{10085.65,1505.85,5800.65,1184.55},{19258,1158.57,9871.22,1289.78}};
+        //klisi constractor me orisma ton array pou arxikopoiisame
+        SupermarketSales pinak = new SupermarketSales(Ar);
+        //Ypologismos poliseon ana katastima
+        
+        //klisi tis getKatastimataSales() apo antikeimeno pou dimiourgisame
+        pinak.getKatastimataSales();
+        
+        //klisi tis getProductSales() apo antikeimeno pou dimiourgisame
+        pinak.getProductSales();
+        //klisi tis getSupermarketSales() apo antikeimeno pou dimiourgisame
+        pinak.getSupermarketSales();
+    }//main end
+}//class end
