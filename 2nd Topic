@@ -1,0 +1,137 @@
+/******************************************************************************
+ *                                  PLS50                                     *
+ *                              2nd Assigmment                                *
+ *                                2nd Topic                                   *
+ *                          Academic Year 2020-2021                           *
+ *****************************************************************************/
+import java.util.Scanner;  //necessary
+import java.lang.Exception;//necessary
+import java.io.*;           //necessary
+import java.util.ArrayList;//necessary
+ public class URLsVisitedMenu{
+ 
+      
+      /* 
+       * methodos menu(), emfanizei epiloges, diavazei epilogi xristi, 
+       * epistrefei epilogi.Dilonetai static gia na mporei na klithi xoris 
+       * antikeimeno kai epistrefei os tipo integer.
+       */
+      public  static   int menu(){
+          
+          try{
+          
+          int selection;//field, user's selection
+          System.out.println("1. Input the name of the file containing URLs you want to analyse");
+          System.out.println("2. Input the path of the directory containing the files you want"+
+          "to analyse for URLs");
+          System.out.println("3. Exit");
+          System.out.println("Which is you choice");
+          Scanner kb = new Scanner(System.in);//constractor input object
+          
+          //apodectes epiloges mono 1,2,3
+          do{
+              selection = kb.nextInt();//in case a integer
+              kb.nextLine();}//in case typing many characters
+          while (selection <1 || selection>3);
+          return selection;
+          }
+        catch(Exception e){
+            System.out.println("Please, select 1, 2 or 3");
+           }
+        } //menu() end 
+    
+        public static void fileAnalyzer(String filename){//methodos me orisma to onoma tou arxeiou
+         try{
+             //dimiourgeia  antikeimenou URLsVisited()
+             URLsVisited ThaURLsVisited = new URLsVisited(filename);
+                         
+             ThaURLsVisited.printAll();//ektiposi olwn twn dieuthinsewn komvwn arxeiou
+             
+             ThaURLsVisited.removeDublicates();//remove same urls
+             
+             ThaURLsVisited.printAll();//print only unique urls
+            
+            }
+            
+        catch(Exception e){
+            System.out.println("Could not find the file"+filename+ 
+            "Please insert a valid path and filename");
+            }
+            
+        }//method end
+      
+          
+ public static void main(String[] arg){ 
+         int selection;//field, user's selection
+          
+         try{
+             do {
+         //klisi menu() gia na diavaseitin epilogi tou xristi
+         selection = menu();
+         //analoga me tin epilogi, antistoixes methodous
+         switch(selection){
+             
+             case 1:
+             System.out.println("Input the name of the file containing URLs you want to analyse");
+             String hpath;//declare field
+             Scanner kb = new Scanner(System.in);//import object from keyboard
+             hpath = kb.nextLine();//anathesi sti metavliti
+             fileAnalyzer(hpath);//kalw methodo, me orisma to path tou xristi
+             break;
+             
+             case 2:
+             //import from kb path name (tou fakelou)
+             System.out.println("Input the path of the directory containing the files you want"+
+            "to analyse for URLs");
+          /*dilosi kai dimiourgia String 1D ArrayList
+           * gia to periexomenou fakelou. Mporei na exei metavlito megethos.
+           */
+            ArrayList<String> filenames = new ArrayList<String>();
+            String hpath2;//declare field
+            Scanner kb2 = new Scanner(System.in);//import object from keyboard
+            hpath2 = kb2.nextLine();//anathesi sti metavliti
+             //check if there is the path (tou fakelou)
+              if (hpath2 == null)
+              System.out.println("Input correct path of the directory");
+             else{//if there is the path
+                
+             /*import all lines of the specific file
+              * I have not controled subfolders in this file
+              */
+             String file;//tou xristi
+                          
+             FileInputStream newfile = new FileInputStream(file);//declare and constract file object
+             DataInputStream in = new DataInputStream(newfile);
+             BufferedReader br = new BufferedReader(new InputStreamReader(in));
+             
+            
+           //diabazei ena-ena ta arxeia tou fakelou, pou ki auta exoun data.
+                File folder = new File(hpath2);
+                File[] listOfFiles = folder.listFiles();
+
+                for (File fofile : listOfFiles) {
+                    if (fofile.isFile()) {
+                            filenames.add(fofile.getName());//adding (copy) to ArrayList
+                        }
+                    for(String element:filenames){    
+                    fileAnalyzer(element);}//klisi tis methodou, gia kathe stoixeio    
+                    }      
+                         
+           
+                 /*stin proigoumeni grammi, gia kathe stoixeio tou pinaka , tha kalei tin
+                 * fileAnalyzer() pou tha typonei stin othoni olous tous
+                 * komvous kai sti sinexeia tous monadikous taksinomimenous
+                 */
+                                            
+                 break;
+                }
+            }//switch end
+          //epidei mono 1,2,3 mporouse na epilegei  kai to 3 einai to exit
+        }while (selection !=3); 
+        
+        }//try end
+    catch (Exception e){
+        System.out.println(e+"Input correct path of the directory");
+    }//catch end
+}//main end
+} //class end  
