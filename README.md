@@ -1,5 +1,6 @@
 # Java-Eclipse---PLS50-2ndRE
 
+---------------------------------------------------------------------------------------------------
 1st Topic (Edit File with URLs)
 
 A programmer wants to extract from a text file (the file mySources.src is given with the
@@ -79,7 +80,7 @@ Could not find the file myResources.src. Please insert a valid path and filename
 Note: In order to read from a file you can use the commands you will find in example 9.2 of your book  or the Scanner class. You will need to do mandatory exception handling with a
 try ... catch ... statement.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 
 2nd Topic (Edit Files with URLs with Options Menu)
 
