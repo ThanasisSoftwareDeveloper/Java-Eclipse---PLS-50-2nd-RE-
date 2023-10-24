@@ -1,0 +1,78 @@
+/***************************************************************************
+ *                              PLS50                                      *
+ *                          2nd Assignment                                 *
+ *                         3rd Topic/ file 1                               * 
+ *                      Academic Year 2020-2021                            *
+ **************************************************************************/
+public class SupermarketSales{//SupermarketSales class
+    
+    public double sales[][];//field - 2D array with sales
+    
+    public int katastimata, products;//fields for katastimata(rows),products (columns)
+    
+    SupermarketSales(double pinakas[][]){//constractor
+    int i,j;//local fields
+    
+    this.katastimata = pinakas.length;//plenty of lines in 2D array
+    this.products = pinakas[0].length;//plenty of columns is the same in array
+    
+    for (i=0; i<this.katastimata; i++)//for the hole line
+        for (j=0; j<this.products; j++)//for the hole row
+            if (pinakas[i][j]<0){//checking array prices if negatives
+                System.out.println("Error in prices");
+                System.exit(1);
+            }//if end
+            sales = pinakas;//anathesi(copy) tis metavlitis b sto sales array
+}//constractor end
+/*H getKatastimataSales() diatrexei pinaka grammi-grammi. 
+ * Gia kathe grammi (katastima) athroizei tis pwliseis tou.
+ */
+public void getKatastimataSales(){
+    int i,j;//local fields
+    double sum;//local field
+    
+        for (i=0; i<katastimata; i++){
+            System.out.println("Katastima no:"+i);
+        sum = 0.0;
+        for (j=0; j<products; j++)
+            sum += sales[i][j];
+        System.out.println("Total income is "+sum);
+    }
+    
+
+}//method end
+public void getProductSales(){
+    int i,j;//local fields
+    double sum;//local field
+    
+    /*diatrexei stoixeia tou 2 array stili-stili.
+     * Gia kathe stili (products) athroizei tis pwliseis tou kai vriskei average
+     */ 
+    for (j=0; j<products; j++){
+        System.out.println("Proion no "+j);
+        sum = 0.0;
+        for(i=0; i<katastimata; i++)
+            sum += sales[i][j];
+            System.out.println("Total income is "+sum);//product income per shop
+            
+            //average product income per shop
+            System.out.println("Average income ana katastima is "+sum/katastimata);
+}//for end
+}//method end
+public void getSupermarketSales(){
+    int i,j;//local fields
+    double sum;//local field
+    sum = 0.0; //arxikopoiisi   
+    //diatrexei ola ta stoixeia toy disdiastatou pinaka
+    for (i=0; i<katastimata; i++){
+                
+        for (j=0; j<products; j++)
+            sum+= sales[i][j];//total income S/M chain)
+        }//for end    
+            System.out.println("The total income of all the Supermarket's katastimata is "+sum);
+            System.out.println("Average income per katastima is "+sum/katastimata);
+        
+    
+    
+}//method end
+}//class end
