@@ -189,3 +189,7 @@ Your program will first call the static method setSupermarketName() to set the n
 
 It will then create the two objects of the class, one for each poli, and assign the appropriate values to the poli field of each object.
 Finally, it will call the getkatastimataSales method of the two objects to store the results in the corresponding files.
+
+Contact
+-------
+Feature requests, comments and requests for clarification should all be sent to the author at thanasis20007@gmail.com. I will try to respond quickly to all requests, so feel free to email me!
